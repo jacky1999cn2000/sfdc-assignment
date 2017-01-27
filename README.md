@@ -1,3 +1,3 @@
 # sfdc-assignment
 
-* [Tech Leanings](/notes/TechLeanings.md)
+* [Tech Leanings](/notes/TechLearnings.md)
