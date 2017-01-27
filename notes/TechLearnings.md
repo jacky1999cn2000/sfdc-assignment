@@ -6,7 +6,7 @@
 
 * [Visualforce Tab Icon](http://salesforce.stackexchange.com/questions/32026/how-to-display-sfdc-standard-icons-on-vf-page)
 
-* [ngrok](https://medium.com/@rajaraodv/developing-react-redux-apps-in-salesforce-s-visualforce-3ad7be560d1c#.x2ca76quu)
+* [ngrok](https://ngrok.com/)
 
 **TERMINAL 1**
 ```
@@ -18,4 +18,4 @@
   cd assets
   ngrok http 3000
 ```
-![1.png](/imgs/1.png)
+![1.png](/notes/imgs/1.png) 
