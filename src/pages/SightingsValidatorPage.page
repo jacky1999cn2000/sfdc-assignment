@@ -1,0 +1,9 @@
+<apex:page showHeader="true" sidebar="true">
+	<img src="/img/icon/leaf32.png"></img>
+
+	<apex:pageBlock title="Details">
+	</apex:pageBlock>
+
+	<apex:pageBlock title="Overview">
+	</apex:pageBlock>
+</apex:page>

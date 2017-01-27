@@ -1,0 +1,5 @@
+/config
+/debug
+/assets
+*.sublime-project
+CONFIG.md
