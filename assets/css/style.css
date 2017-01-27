@@ -1,0 +1,29 @@
+.header {
+    margin: 10px 0px;
+}
+
+.header img {
+    width: 25px;
+    height: 25px;
+    vertical-align: bottom;
+}
+
+.header span {
+    font-size: 1.5em;
+    vertical-align: top;
+}
+
+.search {
+    margin-top: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #F0F0F0;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.search-label {
+    width: 200px;
+    text-align: right;
+    margin-right: 10px;
+    font-weight: 600;
+}

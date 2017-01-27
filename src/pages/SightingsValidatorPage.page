@@ -1,9 +1,51 @@
-<apex:page showHeader="true" sidebar="true">
-	<img src="/img/icon/leaf32.png"></img>
+<apex:page showHeader="true" sidebar="true" controller="SightingsValidatorController">
+	<apex:stylesheet value="https://40d95fd3.ngrok.io/css/style.css"/>
 
-	<apex:pageBlock title="Details">
-	</apex:pageBlock>
+	<div class="header">
+		<img src="/img/icon/leaf32.png"></img>
+		<span>Sightings Validation</span>
+	</div>
 
-	<apex:pageBlock title="Overview">
-	</apex:pageBlock>
+	<apex:form>
+		<apex:pageBlock title="Details" id="details">
+			<apex:map width="600px" height="400px" mapType="satellite" zoomLevel="12" center="One Market Street, San Francisco, CA">
+			</apex:map>
+
+			<div>
+				<div class="search">
+					<div class="search-label">
+						<apex:outputLabel value="Location(Latitude)"></apex:outputLabel>
+					</div>
+					<div>
+						<apex:inputField value="{!validator.Default_Sighting_Location__Latitude__s}"/>
+					</div>
+				</div>
+				<div class="search">
+					<div class="search-label">
+						<apex:outputLabel value="Location(Longitude)"></apex:outputLabel>
+					</div>
+					<div>
+						<apex:inputField value="{!validator.Default_Sighting_Location__Longitude__s}"/>
+					</div>
+				</div>
+				<div class="search">
+					<div class="search-label">
+						<apex:outputLabel value="Distance(km)"></apex:outputLabel>
+					</div>
+					<div>
+						<apex:selectList>
+			            <!-- <apex:selectOptions value="{!items}"/> -->
+			      </apex:selectList>
+					</div>
+				</div>
+				<apex:commandButton reRender="overview" value="Search" action="{!search}" />
+			</div>
+		</apex:pageBlock>
+
+		<apex:pageBlock title="Overview" id="overview">
+			<apex:outputText value="{!test}" />
+		</apex:pageBlock>
+	</apex:form>
+
+	<script src="https://40d95fd3.ngrok.io/js/script.js" type="text/javascript"/>
 </apex:page>
