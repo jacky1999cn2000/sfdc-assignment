@@ -1,5 +1,5 @@
 <apex:page showHeader="true" sidebar="true" controller="SightingsValidatorController">
-	<apex:stylesheet value="https://626c4400.ngrok.io/css/style.css"/>
+	<apex:stylesheet value="https://3f437d1d.ngrok.io/css/style.css"/>
 
 	<!-- header -->
 	<div class="header">
@@ -11,7 +11,10 @@
 		<!-- details -->
 		<apex:pageBlock title="Details" id="details">
 			<!-- map -->
-			<apex:map width="600px" height="400px" mapType="satellite" zoomLevel="12" center="One Market Street, San Francisco, CA">
+			<apex:map width="600px" height="400px" mapType="satellite" zoomLevel="5" center="{latitude: {!validator.Default_Sighting_Location__Latitude__s}, longitude: {!validator.Default_Sighting_Location__Longitude__s}}">
+				<apex:repeat value="{!Sightings}" var="sighing">
+		    	<apex:mapMarker position="{latitude: {!sighing.Location__Latitude__s}, longitude: {!sighing.Location__Longitude__s}}"/>
+		    </apex:repeat>
 			</apex:map>
 
 			<!-- search -->
@@ -20,7 +23,10 @@
 					<apex:outputLabel value="Location(Latitude)"></apex:outputLabel>
 				</div>
 				<div class="search-item">
-					<apex:inputField value="{!validator.Default_Sighting_Location__Latitude__s}"/>
+					<apex:outputPanel layout="block" styleClass="requiredInput" >
+					    <div class="requiredBlock"></div>
+					    <apex:inputText required="true" value="{!latitude}"/>
+					</apex:outputPanel>
 				</div>
 			</div>
 			<div class="search-items-group">
@@ -28,7 +34,10 @@
 					<apex:outputLabel value="Location(Longitude)"></apex:outputLabel>
 				</div>
 				<div class="search-item">
-					<apex:inputField value="{!validator.Default_Sighting_Location__Longitude__s}"/>
+					<apex:outputPanel layout="block" styleClass="requiredInput" >
+					    <div class="requiredBlock"></div>
+					    <apex:inputText required="true" value="{!longitude}"/>
+					</apex:outputPanel>
 				</div>
 			</div>
 			<div class="search-items-group">
@@ -36,15 +45,15 @@
 					<apex:outputLabel value="Distance(km)"></apex:outputLabel>
 				</div>
 				<div class="search-item">
-					<apex:selectList>
-		            <!-- <apex:selectOptions value="{!items}"/> -->
+					<apex:selectList value="{!radius}" size="1">
+            <apex:selectOptions value="{!options}"/>
 		      </apex:selectList>
 				</div>
 			</div>
 			<div class="search-items-group">
 				<div class="search-item search-item-label"></div>
 				<div class="search-item">
-					<apex:commandButton reRender="overview" value="Search" action="{!search}" />
+					<apex:commandButton reRender="overview,details" value="Search" action="{!search}" oncomplete="clearSelection()"/>
 				</div>
 			</div>
 		</apex:pageBlock>
@@ -79,14 +88,14 @@
 
 			<!-- pagination -->
 			<div class="paging-buttons-group">
-				<apex:commandButton reRender="overview" value="First" action="{!setCon.first}" disabled="{!!setCon.hasPrevious}" oncomplete="restoreSelection()"/>
-				<apex:commandButton reRender="overview" value="Previous" action="{!setCon.previous}" disabled="{!!setCon.hasPrevious}" oncomplete="restoreSelection()"/>
+				<apex:commandButton reRender="overview,details" value="First" action="{!setCon.first}" disabled="{!!setCon.hasPrevious}" oncomplete="restoreSelection()"/>
+				<apex:commandButton reRender="overview,details" value="Previous" action="{!setCon.previous}" disabled="{!!setCon.hasPrevious}" oncomplete="restoreSelection()"/>
 				<apex:outputText>Page {!setCon.pageNumber} of {!CEILING(noOfRecords/setCon.pageSize)}</apex:outputText>
-				<apex:commandButton reRender="overview" value="Next" action="{!setCon.next}" disabled="{!!setCon.hasNext}" oncomplete="restoreSelection()"/>
-				<apex:commandButton reRender="overview" value="Last" action="{!setCon.last}" disabled="{!!setCon.hasNext}" oncomplete="restoreSelection()"/>
+				<apex:commandButton reRender="overview,details" value="Next" action="{!setCon.next}" disabled="{!!setCon.hasNext}" oncomplete="restoreSelection()"/>
+				<apex:commandButton reRender="overview,details" value="Last" action="{!setCon.last}" disabled="{!!setCon.hasNext}" oncomplete="restoreSelection()"/>
 			</div>
 		</apex:pageBlock>
 	</apex:form>
 
-	<script src="https://626c4400.ngrok.io/js/script.js" type="text/javascript"/>
+	<script src="https://3f437d1d.ngrok.io/js/script.js" type="text/javascript"/>
 </apex:page>
