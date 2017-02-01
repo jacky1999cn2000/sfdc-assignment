@@ -1,5 +1,5 @@
 <apex:page showHeader="true" sidebar="true" controller="SightingsValidatorController">
-	<apex:stylesheet value="https://3f437d1d.ngrok.io/css/style.css"/>
+	<apex:stylesheet value="https://c87953d7.ngrok.io/css/style.css"/>
 
 	<!-- header -->
 	<div class="header">
@@ -60,6 +60,14 @@
 
 		<!-- overview -->
 		<apex:pageBlock title="Overview" id="overview">
+			<apex:outputText value="{!test}" />
+			<!-- buttons -->
+			<apex:pageBlockButtons>
+	      <apex:commandButton onclick="approve(selectedIdString);clearSelection();return false;" value="Approve"/>
+				<apex:commandButton action="{!reject}" value="Reject"/>
+				<apex:commandButton action="{!reset}" value="Reset"/>
+	    </apex:pageBlockButtons>
+
 			<!-- table -->
 			<apex:pageBlockTable value="{!Sightings}" var="sighting">
 				<apex:column>
@@ -95,7 +103,11 @@
 				<apex:commandButton reRender="overview,details" value="Last" action="{!setCon.last}" disabled="{!!setCon.hasNext}" oncomplete="restoreSelection()"/>
 			</div>
 		</apex:pageBlock>
+
+		<apex:actionFunction action="{!approve}" name="approve" reRender="overview,details">
+			<apex:param name="sightingIds" assignTo="{!sightingIds}" value="" />
+		</apex:actionFunction>
 	</apex:form>
 
-	<script src="https://3f437d1d.ngrok.io/js/script.js" type="text/javascript"/>
+	<script src="https://c87953d7.ngrok.io/js/script.js" type="text/javascript"/>
 </apex:page>
