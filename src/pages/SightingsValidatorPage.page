@@ -1,5 +1,5 @@
 <apex:page showHeader="true" sidebar="true" controller="SightingsValidatorController">
-	<apex:stylesheet value="https://c87953d7.ngrok.io/css/style.css"/>
+	<apex:stylesheet value="https://a1f883b5.ngrok.io/css/style.css"/>
 
 	<!-- header -->
 	<div class="header">
@@ -8,6 +8,10 @@
 	</div>
 
 	<apex:form>
+		<apex:outputPanel id="messages">
+			<apex:pageMessages />
+		</apex:outputPanel>
+
 		<!-- details -->
 		<apex:pageBlock title="Details" id="details">
 			<!-- map -->
@@ -60,12 +64,11 @@
 
 		<!-- overview -->
 		<apex:pageBlock title="Overview" id="overview">
-			<apex:outputText value="{!test}" />
 			<!-- buttons -->
 			<apex:pageBlockButtons>
-	      <apex:commandButton onclick="approve(selectedIdString);clearSelection();return false;" value="Approve"/>
-				<apex:commandButton action="{!reject}" value="Reject"/>
-				<apex:commandButton action="{!reset}" value="Reset"/>
+	      <apex:commandButton onclick="validate(selectedIdString,'approve');clearSelection();return false;" value="Approve"/>
+				<apex:commandButton onclick="validate(selectedIdString,'reject');clearSelection();return false;" value="Reject"/>
+				<apex:commandButton onclick="validate('','reset');clearSelection();return false;" value="Reset"/>
 	    </apex:pageBlockButtons>
 
 			<!-- table -->
@@ -104,10 +107,12 @@
 			</div>
 		</apex:pageBlock>
 
-		<apex:actionFunction action="{!approve}" name="approve" reRender="overview,details">
+		<!-- action function -->
+		<apex:actionFunction action="{!validate}" name="validate" reRender="overview,details,messages">
 			<apex:param name="sightingIds" assignTo="{!sightingIds}" value="" />
+			<apex:param name="validateType" assignTo="{!validateType}" value="" />
 		</apex:actionFunction>
 	</apex:form>
 
-	<script src="https://c87953d7.ngrok.io/js/script.js" type="text/javascript"/>
+	<script src="https://a1f883b5.ngrok.io/js/script.js" type="text/javascript"/>
 </apex:page>

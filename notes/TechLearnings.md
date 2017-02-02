@@ -34,9 +34,9 @@
     * [article 1](http://salesforce.stackexchange.com/questions/101431/race-condition-between-commandlink-and-actionfunction)
     * [article 2](http://stackoverflow.com/questions/11893895/apexactionfunction-and-database-update-unintended-page-refresh)
   * so, we used the `return false;` to avoid the default full page reload behavior; however, we need to refresh parts of the the page, and this was done by setting `reRender` attribute in `<apex:actionFunction/>` (see below)
-  * in addition, in order to pass parameter into the function defined by <apex:actionFunction/>, you have to provide a `reRender` attribute, and in this case, we rerender `overview` and `details` pageBlocks.
+  * in addition, in order to pass parameter into the function defined by <apex:actionFunction/>, you have to provide a `reRender` attribute, and in this case, we rerender `overview`,`details` and `messages` pageBlocks.
   ```
-  <apex:actionFunction action="{!approve}" name="approve" reRender="overview,details">
+  <apex:actionFunction action="{!approve}" name="approve" reRender="overview,details,messages">
     <apex:param name="sightingIds" assignTo="{!sightingIds}" value="" />
   </apex:actionFunction>
   ```

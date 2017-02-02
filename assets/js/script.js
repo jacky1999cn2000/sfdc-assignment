@@ -45,13 +45,13 @@ function selectAll(){
   sync selectedIdArray and selectedIdString with checkboxes on the current page
 */
 function saveSelection(){
-  selectedIdString = selectedIdArray.join(' ');
+  selectedIdString = selectedIdArray.join(',');
 
   document.querySelectorAll("input[type='checkbox']").forEach(function(element){
     if(element.checked){
       if(element.id != 'selectallsightingscheckbox' && selectedIdString.indexOf(element.id) == -1){
         selectedIdArray.push(element.id);
-        selectedIdString = selectedIdString + ' ' + element.id;
+        selectedIdString = selectedIdArray.join(',');
       }
     }else{
       // as long as there were unchecked checkbox, uncheck the "select all" checkbox
@@ -61,7 +61,7 @@ function saveSelection(){
         for(i=0; i<selectedIdArray.length; i++){
           if(selectedIdArray[i] == element.id){
             selectedIdArray.splice(i,1);
-            selectedIdString = selectedIdArray.join(' ');
+            selectedIdString = selectedIdArray.join(',');
           }
         }
       }
@@ -81,8 +81,8 @@ function saveSelection(){
 /*
   restore checked checkboxes based on selectedIdArray
 */
-function restoreSelection(){ console.log('restoreSelection');console.log('selectedIdArray ',selectedIdArray);
-  selectedIdString = selectedIdArray.join(' ');
+function restoreSelection(){
+  selectedIdString = selectedIdArray.join(',');
 
   document.querySelectorAll("input[type='checkbox']").forEach(function(element){
     if(selectedIdString.indexOf(element.id) != -1){
