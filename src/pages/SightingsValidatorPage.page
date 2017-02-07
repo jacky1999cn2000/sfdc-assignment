@@ -1,5 +1,5 @@
 <apex:page showHeader="true" sidebar="true" controller="SightingsValidatorController">
-	<apex:stylesheet value="https://a1f883b5.ngrok.io/css/style.css"/>
+	<apex:stylesheet value="https://b3b24964.ngrok.io/css/style.css"/>
 
 	<!-- header -->
 	<div class="header">
@@ -114,5 +114,5 @@
 		</apex:actionFunction>
 	</apex:form>
 
-	<script src="https://a1f883b5.ngrok.io/js/script.js" type="text/javascript"/>
+	<script src="https://b3b24964.ngrok.io/js/script.js" type="text/javascript"/>
 </apex:page>

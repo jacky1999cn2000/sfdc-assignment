@@ -44,3 +44,6 @@
 * [Delete classes & triggers from Production Organizaiton via Workbench](http://www.salesforceben.com/way-to-delete-apex-classes-from-production/)
 
 * [Detailed explanations about different messaging options in Visualforce](http://salesforce.stackexchange.com/questions/8139/difference-between-the-multiple-messaging-options-in-visualforce)
+
+* [Partial success and trigger firing](http://cropredysfdc.com/2015/04/26/245/)
+* [Partial success and trigger firing documentation](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_dml_bulk_exceptions.htm)
