@@ -1,4 +1,4 @@
-public class SightingsValidatorController {
+public with sharing class SightingsValidatorController {
 	// current user
 	public User validator { get; set; }
 

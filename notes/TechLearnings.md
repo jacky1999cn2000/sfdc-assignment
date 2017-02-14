@@ -51,3 +51,5 @@
 * [Migrate ListView with ChangeSet](http://www.simplysfdc.com/2014/03/salesforce-list-view-not-visible-in.html)
 
 * [Custom List View to display VF Page](http://salesforce.stackexchange.com/questions/32067/custom-list-view-to-display-vf-page)
+
+* [Sharing rules](https://success.salesforce.com/answers?id=90630000000huVFAAY)
