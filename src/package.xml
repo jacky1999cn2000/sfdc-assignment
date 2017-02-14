@@ -17,9 +17,17 @@
         <name>ApexTrigger</name>
     </types>
     <types>
+        <members>Sightings_Validator</members>
+        <name>CustomTab</name>
+    </types>
+    <types>
         <members>Citizen Scientist Volunteer</members>
         <members>Data Validator</members>
         <name>Profile</name>
+    </types>
+    <types>
+        <members>Sighting__c.Approved_Sighting_Shared_to_all_Citizen_Scientists</members>
+        <name>SharingCriteriaRule</name>
     </types>
     <version>34.0</version>
 </Package>

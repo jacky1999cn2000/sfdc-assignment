@@ -56,7 +56,6 @@ public class SightingsValidatorController {
 				sightingList.add(sighting);
 		}
 
-
 		return sightingList;
 	}
 
