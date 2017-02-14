@@ -1,5 +1,5 @@
 <apex:page showHeader="true" sidebar="true" controller="SightingsValidatorController">
-	<apex:stylesheet value="https://b3b24964.ngrok.io/css/style.css"/>
+	<apex:stylesheet value="https://8361dae1.ngrok.io/css/style.css"/>
 
 	<!-- header -->
 	<div class="header">
@@ -7,7 +7,7 @@
 		<span>Sightings Validation</span>
 	</div>
 
-	<apex:form>
+	<apex:form >
 		<apex:outputPanel id="messages">
 			<apex:pageMessages />
 		</apex:outputPanel>
@@ -65,7 +65,7 @@
 		<!-- overview -->
 		<apex:pageBlock title="Overview" id="overview">
 			<!-- buttons -->
-			<apex:pageBlockButtons>
+			<apex:pageBlockButtons >
 	      <apex:commandButton onclick="validate(selectedIdString,'approve');clearSelection();return false;" value="Approve"/>
 				<apex:commandButton onclick="validate(selectedIdString,'reject');clearSelection();return false;" value="Reject"/>
 				<apex:commandButton onclick="validate('','reset');clearSelection();return false;" value="Reset"/>
@@ -73,7 +73,7 @@
 
 			<!-- table -->
 			<apex:pageBlockTable value="{!Sightings}" var="sighting">
-				<apex:column>
+				<apex:column >
 		      <apex:facet name="header">
 		          <input type="checkbox" id="selectallsightingscheckbox" onClick="selectAll();" />
 		      </apex:facet>
@@ -101,7 +101,7 @@
 			<div class="paging-buttons-group">
 				<apex:commandButton reRender="overview,details" value="First" action="{!setCon.first}" disabled="{!!setCon.hasPrevious}" oncomplete="restoreSelection()"/>
 				<apex:commandButton reRender="overview,details" value="Previous" action="{!setCon.previous}" disabled="{!!setCon.hasPrevious}" oncomplete="restoreSelection()"/>
-				<apex:outputText>Page {!setCon.pageNumber} of {!CEILING(noOfRecords/setCon.pageSize)}</apex:outputText>
+				<apex:outputText >Page {!setCon.pageNumber} of {!CEILING(noOfRecords/setCon.pageSize)}</apex:outputText>
 				<apex:commandButton reRender="overview,details" value="Next" action="{!setCon.next}" disabled="{!!setCon.hasNext}" oncomplete="restoreSelection()"/>
 				<apex:commandButton reRender="overview,details" value="Last" action="{!setCon.last}" disabled="{!!setCon.hasNext}" oncomplete="restoreSelection()"/>
 			</div>
@@ -114,5 +114,5 @@
 		</apex:actionFunction>
 	</apex:form>
 
-	<script src="https://b3b24964.ngrok.io/js/script.js" type="text/javascript"/>
+	<script src="https://8361dae1.ngrok.io/js/script.js" type="text/javascript"/>
 </apex:page>

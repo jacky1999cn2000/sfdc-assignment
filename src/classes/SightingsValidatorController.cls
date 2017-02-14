@@ -20,11 +20,15 @@ public class SightingsValidatorController {
 	public ApexPages.StandardSetController setCon {
 		get{
 			if(setCon == null){
-				size = 5;
-				String queryString = 'SELECT Id,CreatedById,CreatedBy.Name,Date__c,Location__c,Location__Latitude__s,Location__Longitude__s,Number_of_Animals__c,Species__r.Name,Species__r.Rarity__c,Validation_Status__c FROM Sighting__c WHERE Validation_Status__c = \'Not Validated\' AND DISTANCE(Location__c, GEOLOCATION(' + latitude + ',' + longitude + '), \'mi\') < ' + radius + ' ORDER BY Date__c ASC, Species__r.Name ASC';
-				setCon = new ApexPages.StandardSetController(Database.getQueryLocator(queryString));
-				setCon.setPageSize(size);
-				noOfRecords = setCon.getResultSize();
+				try{
+					size = 5;
+					String queryString = 'SELECT Id,CreatedById,CreatedBy.Name,Date__c,Location__c,Location__Latitude__s,Location__Longitude__s,Number_of_Animals__c,Species__r.Name,Species__r.Rarity__c,Validation_Status__c FROM Sighting__c WHERE Validation_Status__c = \'Not Validated\' AND DISTANCE(Location__c, GEOLOCATION(' + latitude + ',' + longitude + '), \'mi\') < ' + radius + ' ORDER BY Date__c ASC, Species__r.Name ASC';
+					setCon = new ApexPages.StandardSetController(Database.getQueryLocator(queryString));
+					setCon.setPageSize(size);
+					noOfRecords = setCon.getResultSize();
+				}catch(Exception ex){
+					ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR, 'Please enter a valid \'Default Sighting Location\' value for the current user.'));
+				}
 			}
 
 			return setCon;
@@ -47,8 +51,11 @@ public class SightingsValidatorController {
 	*/
 	public List<Sighting__c> getSightings(){
 		List<Sighting__c> sightingList = new List<Sighting__c>();
-		for(Sighting__c sighting : (List<Sighting__c>)setCon.getRecords())
-			sightingList.add(sighting);
+		if(setCon != null){
+			for(Sighting__c sighting : (List<Sighting__c>)setCon.getRecords())
+				sightingList.add(sighting);
+		}
+
 
 		return sightingList;
 	}

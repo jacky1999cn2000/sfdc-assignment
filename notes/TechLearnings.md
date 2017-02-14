@@ -47,3 +47,7 @@
 
 * [Partial success and trigger firing](http://cropredysfdc.com/2015/04/26/245/)
 * [Partial success and trigger firing documentation](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_dml_bulk_exceptions.htm)
+
+* [Migrate ListView with ChangeSet](http://www.simplysfdc.com/2014/03/salesforce-list-view-not-visible-in.html)
+
+* [Custom List View to display VF Page](http://salesforce.stackexchange.com/questions/32067/custom-list-view-to-display-vf-page)
