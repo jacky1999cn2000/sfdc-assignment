@@ -53,3 +53,16 @@
 * [Custom List View to display VF Page](http://salesforce.stackexchange.com/questions/32067/custom-list-view-to-display-vf-page)
 
 * [Sharing rules](https://success.salesforce.com/answers?id=90630000000huVFAAY)
+
+* [criteria-based sharing cannot be tested using Apex](http://salesforce.stackexchange.com/questions/124149/criteria-based-sharing-rule-in-apex-test-class)
+
+* [How to retrieve relationship fields from generic sobject or aggregate result objects](https://developer.salesforce.com/forums/?id=906F00000009BKJIA2)
+```
+Set<String> groupNameSet = new Set<String>();
+List<sObject> gmList = [SELECT Group.Name FROM GroupMember WHERE UserOrGroupId =:UserInfo.getUserId()];
+for(sObject gm : gmList){
+  groupNameSet.add(String.valueOf(gm.getSObject('Group').get('Name')));
+}
+```
+
+* [How to test ApexPages messages](https://developer.salesforce.com/forums/?id=906F00000008yOqIAI)
