@@ -37,12 +37,14 @@ public with sharing class SightingsValidatorController {
 
 	/*
 	* indicate whether the current user is valid:
-	* 1. user should have valid values for Location__c and Validation_Specialization__c
-	* 2. if user's profile is 'Data Validator', then user should join at least one 'Validator Public Groups'
+	* 1. user should have valid values for Location__c
+	* 2. if user's profile is 'Data Validator', then user should
+			2.1  have valid value for Validation_Specialization__c
+			2.2 join at least one 'Validator Public Groups'
 	*
-	* P.S. this is not required by the assignment, but added it here for better user experience
+	* P.S. this is not required by the assignment, but for better user experiences I added it here
 	* P.S.S. more robust code should also check whether the public group matches user's validataion specialization,
-	* but it's not in the scope of this assignment
+	* but it's not in the scope of this assignment so I skipped it
 	*/
 	public Boolean validUser {
 		get {
@@ -50,14 +52,14 @@ public with sharing class SightingsValidatorController {
 				if(latitude == null || longitude == null){
 					ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR, 'Current user\'s \'Default Sighting Location\' field is not valid, please check again.'));
 					validUser = false;
-				}else if(specialization == null){
-					ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR, 'Current user has not selected a value for \'Validator Specialization\' field, please check again.'));
-					validUser = false;
 				}else{
 					List<Profile> profileList = [SELECT Id FROM Profile WHERE Name = 'Data Validator'];
 					List<GroupMember> groupMemberList = [SELECT Group.Name, Group.Type, UserOrGroupId FROM GroupMember WHERE UserOrGroupId = :UserInfo.getUserId() AND Group.Type = 'Regular' AND Group.Name LIKE '%Validators%'];
-					if(profileList.size() == 1 && profileList[0].Id == UserInfo.getProfileId() && groupMemberList.size() == 0){
-						ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.INFO, 'Current user has \'Data Validator\' profile but does not belong to any \'Validator Public Group\', are you sure about it?'));
+					if(profileList.size() == 1 && profileList[0].Id == UserInfo.getProfileId() && specialization == null){
+						ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR, 'Current user has \'Data Validator\' profile but does not select a value for \'Validator Specialization\' field.'));
+						validUser = false;
+					}else if(profileList.size() == 1 && profileList[0].Id == UserInfo.getProfileId() && groupMemberList.size() == 0){
+						ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR, 'Current user has \'Data Validator\' profile but does not belong to any \'Validator Public Group\'.'));
 						validUser = false;
 					}else{
 						validUser = true;

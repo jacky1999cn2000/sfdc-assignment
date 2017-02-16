@@ -14,8 +14,6 @@ public class SightingTriggerHandler {
 			speciesIdSet.add(sighting.Species__c);
 		}
 
-		// System.debug('***speciesIdSet '+speciesIdSet);
-
 		// retrieve related Species records for later update
 		List<Species__c> speciesList = [SELECT Id, Rarity__c FROM Species__c WHERE Id IN : speciesIdSet];
 
@@ -29,14 +27,10 @@ public class SightingTriggerHandler {
 			speciesNumberOfAnimalMap.put((ID)ar.get('Species__c'), Integer.ValueOf(ar.get('Total')));
 		}
 
-		// System.debug('***speciesNumberOfAnimalMap '+speciesNumberOfAnimalMap);
-
 		// iterate each related Species, update Rarity field, and perform DML
 		for(Species__c species : speciesList){
 			species.Rarity__c = getRarityValue(speciesNumberOfAnimalMap.get(species.Id));
 		}
-
-		// System.debug('***speciesList '+speciesList);
 
 		update speciesList;
 	}

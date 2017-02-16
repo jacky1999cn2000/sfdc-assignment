@@ -66,3 +66,5 @@ for(sObject gm : gmList){
 ```
 
 * [How to test ApexPages messages](https://developer.salesforce.com/forums/?id=906F00000008yOqIAI)
+
+* [How to test if user has access to a VF or a Class via apex](http://salesforce.stackexchange.com/questions/40683/how-do-i-find-out-if-a-user-has-access-to-a-visualforce-page-through-apex)

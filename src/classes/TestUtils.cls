@@ -30,15 +30,15 @@ public class TestUtils {
 		* @param: recordNumber, the total number of records
 		* @param: animalNumber, the total number of seen animal (this number should be recordNumber*X while X is Integer)
 		* @param: validationStatus, value for validation status
-		* @param: validDate, indicate whether the date field is within past 12 months or not
+		* @param: monthFromToday, used to calculate Date__c, indicating how many months ago the date was compared to today
 		* @param: latitude, latitude for Location (default to 61.00)
 		* @param: longitude, latitude for Location (default to -160.00)
 		* @param: precision, value for Location Precision (default to 10 meters)
     * @return: a List of Sightings
   */
-	public static List<Sighting__c> createSightingListForInsert(Id speciesId, Integer recordNumber, Integer animalNumber, String validationStatus, Boolean validDate, Double latitude, Double longitude, String precision){
+	public static List<Sighting__c> createSightingListForInsert(Id speciesId, Integer recordNumber, Integer animalNumber, String validationStatus, Integer monthFromToday, Double latitude, Double longitude, String precision){
 
-		latitude = latitude == null ? 61.00 : latitude;
+		latitude = latitude == null ? 60.00 : latitude;
 		longitude = longitude == null ? -160.00 : longitude;
 		precision = precision == null ? '10 meters' : precision;
 
@@ -48,7 +48,7 @@ public class TestUtils {
 
 		for(Integer i=0; i<recordNumber; i++){
 			Sighting__c sighting = (Sighting__c)Sighting__c.SObjectType.newSObject(null, true);
-			sighting.Date__c = validDate ? Date.today().addMonths(-6) : Date.today().addMonths(-16);
+			sighting.Date__c = Date.today().addMonths(monthFromToday);
 			sighting.Location__Latitude__s = latitude;
 			sighting.Location__Longitude__s = longitude;
 			sighting.Location_Precision__c = precision;
@@ -67,13 +67,13 @@ public class TestUtils {
 		* @param: recordNumber, the total number of records
 		* @param: animalNumber, the total number of seen animal (this number should be recordNumber*X while X is Integer)
 		* @param: validationStatus, value for validation status
-		* @param: validDate, indicate whether the date field is within past 12 months or not
+		* @param: monthFromToday, used to calculate Date__c, indicating how many months ago the date was compared to today
 		* @param: latitude, latitude for Location (default to 61.00)
 		* @param: longitude, latitude for Location (default to -160.00)
 		* @param: precision, value for Location Precision (default to 10 meters)
     * @return: a List of Sightings
   */
-	public static List<Sighting__c> createSightingListForUpdate(Id speciesId, Integer recordNumber, Integer animalNumber, String validationStatus, Boolean validDate, Double latitude, Double longitude, String precision){
+	public static List<Sighting__c> createSightingListForUpdate(Id speciesId, Integer recordNumber, Integer animalNumber, String validationStatus, Integer monthFromToday, Double latitude, Double longitude, String precision){
 
 		Integer averageAnimalNumber = animalNumber/recordNumber;
 
@@ -81,7 +81,7 @@ public class TestUtils {
 
 		for(Sighting__c sighting : sightingList){
 
-			sighting.Date__c = validDate ? Date.today().addMonths(-6) : Date.today().addMonths(-16);
+			sighting.Date__c = Date.today().addMonths(monthFromToday);
 			sighting.Number_of_Animals__c = averageAnimalNumber;
 
 			if(validationStatus != null){
@@ -114,6 +114,34 @@ public class TestUtils {
 		}
 
 		return speciesNameIdMap;
+	}
+
+	/*
+    * @description: get an unique prefix for username creation
+    * @return: a unique string
+  */
+	public static String getUserNamePrefix(){
+    return UserInfo.getOrganizationId() + System.now().millisecond();
+  }
+
+	/*
+    * @description: create a User with designated parameters
+		* @param: userName, used to create username
+		* @param: profileName, used to assign profile
+		* @param: latitude, latitude for Default_Sighting_Location__c (default to 61.00)
+		* @param: longitude, latitude for Default_Sighting_Location__c (default to -160.00)
+		* @param: specialization, value for Validation_Specialization__c
+    * @return: a User
+  */
+	public static User createTestUser(String userName, String profileName, Decimal latitude, Decimal longitude, String specialization){
+		latitude = latitude == null ? 61.00 : latitude;
+		longitude = longitude == null ? -160.00 : longitude;
+
+		Profile p = [SELECT Id FROM Profile WHERE Name=: profileName];
+		String email = userName+'@test.com';
+		String uniqueUserName = getUserNamePrefix() + email;
+    User u = new User(Alias=userName.left(3), Email=email, UserName=uniqueUserName, Default_Sighting_Location__Latitude__s=latitude, Default_Sighting_Location__Longitude__s=longitude, Validation_Specialization__c=specialization, EmailEncodingKey='UTF-8', LastName='Testing', LanguageLocaleKey='en_US', LocaleSidKey='en_US', ProfileId = p.Id, TimeZoneSidKey='America/Los_Angeles');
+		return u;
 	}
 
 }

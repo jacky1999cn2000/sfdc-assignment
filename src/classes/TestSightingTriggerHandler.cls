@@ -28,18 +28,18 @@ private class TestSightingTriggerHandler {
 
 		List<Sighting__c> sightingList = new List<Sighting__c>();
 
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Bald Eagle'), 50, 0, 'Approved', true, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Black Bear'), 50, 50, 'Approved', true, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Brown Bear'), 50, 200, 'Approved', true, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Gyrfalcon'), 50, 500, 'Approved', true, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Bald Eagle'), 50, 0, 'Approved', -6, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Black Bear'), 50, 50, 'Approved', -6, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Brown Bear'), 50, 200, 'Approved', -6, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Gyrfalcon'), 50, 500, 'Approved', -6, null, null, null));
 
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Halibut'), 50, 0, 'Not Validated', true, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Orca'), 50, 50, 'Not Validated', true, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Polar Bear'), 50, 200, 'Not Validated', true, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Salmon'), 50, 500, 'Not Validated', true, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Halibut'), 50, 0, 'Not Validated', -6, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Orca'), 50, 50, 'Not Validated', -6, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Polar Bear'), 50, 200, 'Not Validated', -6, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Salmon'), 50, 500, 'Not Validated', -6, null, null, null));
 
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Snowy Owl'), 50, 0, 'Rejected', true, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Trout'), 50, 500, 'Approved', false, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Snowy Owl'), 50, 0, 'Rejected', -6, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Trout'), 50, 500, 'Approved', -16, null, null, null));
 
 		/* use Database.insert to allow partial success */
 		Database.insert(sightingList, false);
@@ -108,76 +108,76 @@ private class TestSightingTriggerHandler {
 		List<Sighting__c> sightingList = new List<Sighting__c>();
 
 		/* 1. status: approved, date: within past 12 months  */
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Bald Eagle'), 10, 250, 'Approved', true, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Black Bear'), 10, 250, 'Approved', true, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Brown Bear'), 10, 250, 'Approved', true, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Gyrfalcon'), 10, 250, 'Approved', true, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Halibut'), 10, 250, 'Approved', true, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Orca'), 10, 250, 'Approved', true, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Polar Bear'), 10, 250, 'Approved', true, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Salmon'), 10, 250, 'Approved', true, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Snowy Owl'), 10, 250, 'Approved', true, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Trout'), 10, 250, 'Approved', true, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Bald Eagle'), 10, 250, 'Approved', -6, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Black Bear'), 10, 250, 'Approved', -6, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Brown Bear'), 10, 250, 'Approved', -6, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Gyrfalcon'), 10, 250, 'Approved', -6, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Halibut'), 10, 250, 'Approved', -6, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Orca'), 10, 250, 'Approved', -6, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Polar Bear'), 10, 250, 'Approved', -6, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Salmon'), 10, 250, 'Approved', -6, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Snowy Owl'), 10, 250, 'Approved', -6, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Trout'), 10, 250, 'Approved', -6, null, null, null));
 
 		/* 2. status: rejected, date: within past 12 months  */
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Bald Eagle'), 10, 250, 'Rejected', true, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Black Bear'), 10, 250, 'Rejected', true, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Brown Bear'), 10, 250, 'Rejected', true, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Gyrfalcon'), 10, 250, 'Rejected', true, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Halibut'), 10, 250, 'Rejected', true, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Orca'), 10, 250, 'Rejected', true, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Polar Bear'), 10, 250, 'Rejected', true, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Salmon'), 10, 250, 'Rejected', true, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Snowy Owl'), 10, 250, 'Rejected', true, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Trout'), 10, 250, 'Rejected', true, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Bald Eagle'), 10, 250, 'Rejected', -6, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Black Bear'), 10, 250, 'Rejected', -6, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Brown Bear'), 10, 250, 'Rejected', -6, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Gyrfalcon'), 10, 250, 'Rejected', -6, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Halibut'), 10, 250, 'Rejected', -6, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Orca'), 10, 250, 'Rejected', -6, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Polar Bear'), 10, 250, 'Rejected', -6, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Salmon'), 10, 250, 'Rejected', -6, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Snowy Owl'), 10, 250, 'Rejected', -6, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Trout'), 10, 250, 'Rejected', -6, null, null, null));
 
 		/* 3. status: not validated: date: within past 12 months  */
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Bald Eagle'), 10, 250, 'Not Validated', true, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Black Bear'), 10, 250, 'Not Validated', true, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Brown Bear'), 10, 250, 'Not Validated', true, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Gyrfalcon'), 10, 250, 'Not Validated', true, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Halibut'), 10, 250, 'Not Validated', true, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Orca'), 10, 250, 'Not Validated', true, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Polar Bear'), 10, 250, 'Not Validated', true, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Salmon'), 10, 250, 'Not Validated', true, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Snowy Owl'), 10, 250, 'Not Validated', true, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Trout'), 10, 250, 'Not Validated', true, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Bald Eagle'), 10, 250, 'Not Validated', -6, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Black Bear'), 10, 250, 'Not Validated', -6, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Brown Bear'), 10, 250, 'Not Validated', -6, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Gyrfalcon'), 10, 250, 'Not Validated', -6, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Halibut'), 10, 250, 'Not Validated', -6, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Orca'), 10, 250, 'Not Validated', -6, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Polar Bear'), 10, 250, 'Not Validated', -6, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Salmon'), 10, 250, 'Not Validated', -6, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Snowy Owl'), 10, 250, 'Not Validated', -6, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Trout'), 10, 250, 'Not Validated', -6, null, null, null));
 
 		/* 4. status: approved: date: not within past 12 months  */
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Bald Eagle'), 10, 250, 'Approved', false, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Black Bear'), 10, 250, 'Approved', false, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Brown Bear'), 10, 250, 'Approved', false, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Gyrfalcon'), 10, 250, 'Approved', false, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Halibut'), 10, 250, 'Approved', false, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Orca'), 10, 250, 'Approved', false, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Polar Bear'), 10, 250, 'Approved', false, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Salmon'), 10, 250, 'Approved', false, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Snowy Owl'), 10, 250, 'Approved', false, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Trout'), 10, 250, 'Approved', false, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Bald Eagle'), 10, 250, 'Approved', -16, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Black Bear'), 10, 250, 'Approved', -16, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Brown Bear'), 10, 250, 'Approved', -16, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Gyrfalcon'), 10, 250, 'Approved', -16, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Halibut'), 10, 250, 'Approved', -16, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Orca'), 10, 250, 'Approved', -16, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Polar Bear'), 10, 250, 'Approved', -16, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Salmon'), 10, 250, 'Approved', -16, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Snowy Owl'), 10, 250, 'Approved', -16, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Trout'), 10, 250, 'Approved', -16, null, null, null));
 
 		/* 5. status: rejected: date: not within past 12 months  */
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Bald Eagle'), 10, 250, 'Rejected', false, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Black Bear'), 10, 250, 'Rejected', false, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Brown Bear'), 10, 250, 'Rejected', false, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Gyrfalcon'), 10, 250, 'Rejected', false, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Halibut'), 10, 250, 'Rejected', false, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Orca'), 10, 250, 'Rejected', false, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Polar Bear'), 10, 250, 'Rejected', false, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Salmon'), 10, 250, 'Rejected', false, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Snowy Owl'), 10, 250, 'Rejected', false, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Trout'), 10, 250, 'Rejected', false, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Bald Eagle'), 10, 250, 'Rejected', -16, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Black Bear'), 10, 250, 'Rejected', -16, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Brown Bear'), 10, 250, 'Rejected', -16, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Gyrfalcon'), 10, 250, 'Rejected', -16, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Halibut'), 10, 250, 'Rejected', -16, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Orca'), 10, 250, 'Rejected', -16, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Polar Bear'), 10, 250, 'Rejected', -16, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Salmon'), 10, 250, 'Rejected', -16, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Snowy Owl'), 10, 250, 'Rejected', -16, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Trout'), 10, 250, 'Rejected', -16, null, null, null));
 
 		/* 6. status: not validated: date: not within past 12 months  */
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Bald Eagle'), 10, 250, 'Not Validated', false, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Black Bear'), 10, 250, 'Not Validated', false, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Brown Bear'), 10, 250, 'Not Validated', false, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Gyrfalcon'), 10, 250, 'Not Validated', false, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Halibut'), 10, 250, 'Not Validated', false, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Orca'), 10, 250, 'Not Validated', false, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Polar Bear'), 10, 250, 'Not Validated', false, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Salmon'), 10, 250, 'Not Validated', false, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Snowy Owl'), 10, 250, 'Not Validated', false, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Trout'), 10, 250, 'Not Validated', false, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Bald Eagle'), 10, 250, 'Not Validated', -16, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Black Bear'), 10, 250, 'Not Validated', -16, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Brown Bear'), 10, 250, 'Not Validated', -16, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Gyrfalcon'), 10, 250, 'Not Validated', -16, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Halibut'), 10, 250, 'Not Validated', -16, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Orca'), 10, 250, 'Not Validated', -16, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Polar Bear'), 10, 250, 'Not Validated', -16, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Salmon'), 10, 250, 'Not Validated', -16, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Snowy Owl'), 10, 250, 'Not Validated', -16, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Trout'), 10, 250, 'Not Validated', -16, null, null, null));
 
 		Test.startTest();
 		/* use Database.insert to allow partial success */
@@ -269,18 +269,18 @@ private class TestSightingTriggerHandler {
 
 		List<Sighting__c> sightingList = new List<Sighting__c>();
 
-		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Bald Eagle'), 50, 200, 'Approved', true, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForUpdate(speciesNameIdMap.get('Black Bear'), 50, 200, 'Approved', true, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForUpdate(speciesNameIdMap.get('Brown Bear'), 50, 200, 'Approved', true, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForUpdate(speciesNameIdMap.get('Gyrfalcon'), 50, 200, 'Approved', true, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForInsert(speciesNameIdMap.get('Bald Eagle'), 50, 200, 'Approved', -6, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForUpdate(speciesNameIdMap.get('Black Bear'), 50, 200, 'Approved', -6, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForUpdate(speciesNameIdMap.get('Brown Bear'), 50, 200, 'Approved', -6, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForUpdate(speciesNameIdMap.get('Gyrfalcon'), 50, 200, 'Approved', -6, null, null, null));
 
-		sightingList.addAll(TestUtils.createSightingListForUpdate(speciesNameIdMap.get('Halibut'), 50, 0, 'Approved', true, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForUpdate(speciesNameIdMap.get('Orca'), 50, 50, 'Approved', true, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForUpdate(speciesNameIdMap.get('Polar Bear'), 50, 200, 'Approved', true, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForUpdate(speciesNameIdMap.get('Salmon'), 50, 500, 'Approved', true, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForUpdate(speciesNameIdMap.get('Halibut'), 50, 0, 'Approved', -6, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForUpdate(speciesNameIdMap.get('Orca'), 50, 50, 'Approved', -6, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForUpdate(speciesNameIdMap.get('Polar Bear'), 50, 200, 'Approved', -6, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForUpdate(speciesNameIdMap.get('Salmon'), 50, 500, 'Approved', -6, null, null, null));
 
-		sightingList.addAll(TestUtils.createSightingListForUpdate(speciesNameIdMap.get('Snowy Owl'), 50, 500, 'Approved', true, null, null, null));
-		sightingList.addAll(TestUtils.createSightingListForUpdate(speciesNameIdMap.get('Trout'), 50, 500, 'Approved', true, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForUpdate(speciesNameIdMap.get('Snowy Owl'), 50, 500, 'Approved', -6, null, null, null));
+		sightingList.addAll(TestUtils.createSightingListForUpdate(speciesNameIdMap.get('Trout'), 50, 500, 'Approved', -6, null, null, null));
 
 		Test.startTest();
 		/* use Database.insert to allow partial success */
