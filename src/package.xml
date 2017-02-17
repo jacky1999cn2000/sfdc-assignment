@@ -6,10 +6,6 @@
     </types>
     <types>
         <members>*</members>
-        <name>ApexComponent</name>
-    </types>
-    <types>
-        <members>*</members>
         <name>ApexPage</name>
     </types>
     <types>
@@ -28,6 +24,10 @@
     <types>
         <members>Sighting__c.Approved_Sighting_Shared_to_all_Citizen_Scientists</members>
         <name>SharingCriteriaRule</name>
+    </types>
+    <types>
+        <members>assets</members>
+        <name>StaticResource</name>
     </types>
     <version>34.0</version>
 </Package>
