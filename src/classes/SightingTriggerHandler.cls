@@ -17,8 +17,8 @@ public class SightingTriggerHandler {
 		// retrieve related Species records for later update
 		List<Species__c> speciesList = [SELECT Id, Rarity__c FROM Species__c WHERE Id IN : speciesIdSet];
 
-		// for related Species, use Aggregate SOQL to retrieve total numbers of animals seen for approved Sightings within the last 12 months
-		List<AggregateResult> arList = [SELECT Species__c,SUM(Number_of_Animals__c) Total FROM Sighting__c WHERE Validation_Status__c = 'Approved' AND Date__c = LAST_N_MONTHS:12 AND Species__c IN : speciesIdSet GROUP BY Species__c];
+		// for related Species, use Aggregate SOQL to retrieve total numbers of animals seen for approved Sightings within the last 12 months (use LAST_N_DAYS:365 rather than LAST_N_MONTHS:12 to include current month)
+		List<AggregateResult> arList = [SELECT Species__c,SUM(Number_of_Animals__c) Total FROM Sighting__c WHERE Validation_Status__c = 'Approved' AND Date__c = LAST_N_DAYS:365 AND Species__c IN : speciesIdSet GROUP BY Species__c];
 
 		// create a map with Species Id as key, and total number of animal seen as value
 		Map<Id, Integer> speciesNumberOfAnimalMap = new Map<Id, Integer>();
