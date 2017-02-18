@@ -2,3 +2,5 @@
 /debug
 *.sublime-project
 CONFIG.md
+/deploy/*.jar
+/deploy/log
