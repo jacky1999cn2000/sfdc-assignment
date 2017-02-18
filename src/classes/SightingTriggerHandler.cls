@@ -32,6 +32,10 @@ public class SightingTriggerHandler {
 			species.Rarity__c = getRarityValue(speciesNumberOfAnimalMap.get(species.Id));
 		}
 
+		/*
+			if update failed due to concurrency issue (though highly impossible), then just let Salesforce's
+			default optimistic concurrency behavior to handle it - a.k.a. roll back the entire transaction 
+		*/
 		update speciesList;
 	}
 
